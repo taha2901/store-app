@@ -65,31 +65,4 @@ class ApiServices {
     final res = await _dio.get(ApiConstants.productsByCategory(category));
     return ProductsResponseModel.fromJson(res.data);
   }
-
-  /// POST /products/add
-  Future<ProductModel> addProduct(AddProductRequestModel req) async {
-    final res = await _dio.post(
-      '${ApiConstants.products}/add',
-      data: req.toJson(),
-    );
-    return ProductModel.fromJson(res.data);
-  }
-
-  /// PUT/PATCH /products/{id}
-  Future<ProductModel> updateProduct(
-    int id,
-    UpdateProductRequestModel req,
-  ) async {
-    final res = await _dio.put(
-      ApiConstants.singleProduct(id),
-      data: req.toJson(),
-    );
-    return ProductModel.fromJson(res.data);
-  }
-
-  /// DELETE /products/{id}
-  Future<DeletedProductModel> deleteProduct(int id) async {
-    final res = await _dio.delete(ApiConstants.singleProduct(id));
-    return DeletedProductModel.fromJson(res.data);
-  }
 }

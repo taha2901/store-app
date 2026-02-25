@@ -1,6 +1,3 @@
-
-
-
 import 'api_error_handler.dart';
 
 abstract class ApiResult<T> {
