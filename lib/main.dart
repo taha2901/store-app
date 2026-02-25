@@ -7,10 +7,8 @@ import 'package:store_app/store_app.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // لازم تنتظر ScreenUtil و GetIt يخلصوا
   await ScreenUtil.ensureScreenSize();
 
-  // ✅ سجل كل الـ dependencies قبل runApp
   await setUpGetIt();
 
   runApp(
