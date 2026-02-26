@@ -51,6 +51,7 @@ class LocalCartCubit extends Cubit<LocalCartState> {
   emit(LocalCartLoaded(items));
 }
 
+
   Future<void> clearCart() async {
     try {
       await _repo.clearCart();

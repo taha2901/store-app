@@ -4,6 +4,8 @@ import 'package:store_app/core/networking/dio_factory.dart';
 import 'package:store_app/features/cart/data/repo/cart_dataset.dart';
 import 'package:store_app/features/cart/data/repo/local_cart_repo.dart';
 import 'package:store_app/features/cart/logic/local_cart_cubit.dart';
+import 'package:store_app/features/comments/data/repo/commentt_repo.dart';
+import 'package:store_app/features/comments/data/repo/review_db.dart';
 import 'package:store_app/features/home/data/repo/product_repo.dart';
 import 'package:store_app/features/home/logic/cubit.dart';
 import 'package:store_app/features/login/data/repos/login_repo.dart';
@@ -38,7 +40,10 @@ Future<void> setUpGetIt() async {
   getit.registerSingleton<TodoDatabase>(TodoDatabase.instance);
   getit.registerSingleton<TodoRepository>(
       TodoRepositoryImpl(getit<TodoDatabase>()));
-
-  // ← مرّر الـ repository للـ cubit عشان يحفظ ويجيب من DB
   getit.registerFactory<TodoCubit>(() => TodoCubit(getit<TodoRepository>()));
+
+  // ── Reviews ✅ ────────────────────────────────────────────
+  getit.registerSingleton<ReviewDatabase>(ReviewDatabase.instance);
+  getit.registerSingleton<ReviewRepository>(
+      ReviewRepositoryImpl(getit<ReviewDatabase>()));
 }

@@ -17,7 +17,7 @@ class ProductModel {
   final String warrantyInformation;
   final String shippingInformation;
   final String availabilityStatus;
-  final List<ReviewModel> reviews;
+  // final List<ReviewModel> reviews;
   final String returnPolicy;
   final int minimumOrderQuantity;
   final MetaModel meta;
@@ -41,7 +41,7 @@ class ProductModel {
     required this.warrantyInformation,
     required this.shippingInformation,
     required this.availabilityStatus,
-    required this.reviews,
+    // required this.reviews,
     required this.returnPolicy,
     required this.minimumOrderQuantity,
     required this.meta,
@@ -68,9 +68,9 @@ class ProductModel {
       warrantyInformation: json['warrantyInformation'] as String,
       shippingInformation: json['shippingInformation'] as String,
       availabilityStatus: json['availabilityStatus'] as String,
-      reviews: (json['reviews'] as List<dynamic>)
-          .map((r) => ReviewModel.fromJson(r as Map<String, dynamic>))
-          .toList(),
+      // reviews: (json['reviews'] as List<dynamic>)
+      //     .map((r) => ReviewModel.fromJson(r as Map<String, dynamic>))
+      //     .toList(),
       returnPolicy: json['returnPolicy'] as String,
       minimumOrderQuantity: json['minimumOrderQuantity'] as int,
       meta: MetaModel.fromJson(json['meta'] as Map<String, dynamic>),
@@ -96,7 +96,7 @@ class ProductModel {
         'warrantyInformation': warrantyInformation,
         'shippingInformation': shippingInformation,
         'availabilityStatus': availabilityStatus,
-        'reviews': reviews.map((r) => r.toJson()).toList(),
+        // 'reviews': reviews.map((r) => r.toJson()).toList(),
         'returnPolicy': returnPolicy,
         'minimumOrderQuantity': minimumOrderQuantity,
         'meta': meta.toJson(),
@@ -140,37 +140,37 @@ class DimensionsModel {
 }
 
 // ── review_model.dart ────────────────────────────────────────
-class ReviewModel {
-  final int rating;
-  final String comment;
-  final String date;
-  final String reviewerName;
-  final String reviewerEmail;
+// class ReviewModel {
+//   final int rating;
+//   final String comment;
+//   final String date;
+//   final String reviewerName;
+//   final String reviewerEmail;
 
-  const ReviewModel({
-    required this.rating,
-    required this.comment,
-    required this.date,
-    required this.reviewerName,
-    required this.reviewerEmail,
-  });
+//   const ReviewModel({
+//     required this.rating,
+//     required this.comment,
+//     required this.date,
+//     required this.reviewerName,
+//     required this.reviewerEmail,
+//   });
 
-  factory ReviewModel.fromJson(Map<String, dynamic> json) => ReviewModel(
-        rating: json['rating'] as int,
-        comment: json['comment'] as String,
-        date: json['date'] as String,
-        reviewerName: json['reviewerName'] as String,
-        reviewerEmail: json['reviewerEmail'] as String,
-      );
+//   factory ReviewModel.fromJson(Map<String, dynamic> json) => ReviewModel(
+//         rating: json['rating'] as int,
+//         comment: json['comment'] as String,
+//         date: json['date'] as String,
+//         reviewerName: json['reviewerName'] as String,
+//         reviewerEmail: json['reviewerEmail'] as String,
+//       );
 
-  Map<String, dynamic> toJson() => {
-        'rating': rating,
-        'comment': comment,
-        'date': date,
-        'reviewerName': reviewerName,
-        'reviewerEmail': reviewerEmail,
-      };
-}
+//   Map<String, dynamic> toJson() => {
+//         'rating': rating,
+//         'comment': comment,
+//         'date': date,
+//         'reviewerName': reviewerName,
+//         'reviewerEmail': reviewerEmail,
+//       };
+// }
 
 
 
@@ -359,7 +359,7 @@ class DeletedProductModel extends ProductModel {
     required super.warrantyInformation,
     required super.shippingInformation,
     required super.availabilityStatus,
-    required super.reviews,
+    // required super.reviews,
     required super.returnPolicy,
     required super.minimumOrderQuantity,
     required super.meta,
@@ -388,7 +388,7 @@ class DeletedProductModel extends ProductModel {
       warrantyInformation: base.warrantyInformation,
       shippingInformation: base.shippingInformation,
       availabilityStatus: base.availabilityStatus,
-      reviews: base.reviews,
+      // reviews: base.reviews,
       returnPolicy: base.returnPolicy,
       minimumOrderQuantity: base.minimumOrderQuantity,
       meta: base.meta,
