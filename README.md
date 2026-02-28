@@ -1,9 +1,7 @@
 # 🛍️ Store App
-
 <div align="center">
 
 ![Flutter](https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white)
-
 
 A modern, clean Flutter e-commerce app with a full shopping experience — from browsing products to checkout.
 
@@ -144,3 +142,4 @@ flutter run
 <div align="center">
   <sub>⭐ If you like this project, give it a star!</sub>
 </div>
+
