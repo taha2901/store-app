@@ -12,16 +12,35 @@ import 'package:store_app/features/login/logic/cubit.dart';
 import 'package:store_app/features/login/logic/states.dart';
 import '../../../core/widgets/or_divider.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final formKey = GlobalKey<FormState>();
-    final TextEditingController emailController = TextEditingController();
-    final TextEditingController passwordController = TextEditingController();
-    bool isPasswordObscure = true;
+  State<LoginScreen> createState() => _LoginScreenState();
+}
 
+class _LoginScreenState extends State<LoginScreen> {
+  final _formKey = GlobalKey<FormState>();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  bool _isPasswordObscure = true;
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+
+  void _fillDemoCredentials() {
+    setState(() {
+      _emailController.text = 'emilys';
+      _passwordController.text = 'emilyspass';
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => getit<LoginCubit>(),
       child: BlocConsumer<LoginCubit, LoginState>(
@@ -42,7 +61,7 @@ class LoginScreen extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 24),
                 child: Form(
-                  key: formKey,
+                  key: _formKey,
                   child: SingleChildScrollView(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -58,9 +77,143 @@ class LoginScreen extends StatelessWidget {
                         verticalSpace(28),
                         const OrDivider(),
                         verticalSpace(28),
+
+                        // ── Autofill Demo Button ──────────────────────────
+                        // ── Demo Account Card ─────────────────────────────────
+                        // ── Demo Account Card ─────────────────────────────────
+                        Container(
+                          padding: const EdgeInsets.all(14),
+                          decoration: BoxDecoration(
+                            color: AppColors.accent.withOpacity(0.08),
+                            borderRadius: BorderRadius.circular(12),
+                            border: Border.all(
+                              color: AppColors.accent.withOpacity(0.35),
+                            ),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                children: const [
+                                  Icon(
+                                    Icons.info_outline_rounded,
+                                    size: 16,
+                                    color: AppColors.accent,
+                                  ),
+                                  SizedBox(width: 6),
+                                  Text(
+                                    'No registration required!',
+                                    style: TextStyle(
+                                      color: AppColors.accent,
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 13,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(height: 8),
+                              const Text(
+                                'Use the demo account below to log in:',
+                                style: TextStyle(
+                                  color: AppColors.bodyText,
+                                  fontSize: 12,
+                                ),
+                              ),
+                              const SizedBox(height: 6),
+                              Row(
+                                children: const [
+                                  Icon(
+                                    Icons.person_outline,
+                                    size: 14,
+                                    color: AppColors.bodyText,
+                                  ),
+                                  SizedBox(width: 4),
+                                  Text(
+                                    'Username: ',
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      color: AppColors.bodyText,
+                                    ),
+                                  ),
+                                  Text(
+                                    'emilys',
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w700,
+                                      color: AppColors.title,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(height: 3),
+                              Row(
+                                children: const [
+                                  Icon(
+                                    Icons.lock_outline,
+                                    size: 14,
+                                    color: AppColors.bodyText,
+                                  ),
+                                  SizedBox(width: 4),
+                                  Text(
+                                    'Password: ',
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      color: AppColors.bodyText,
+                                    ),
+                                  ),
+                                  Text(
+                                    'emilyspass',
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w700,
+                                      color: AppColors.title,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(height: 12),
+                              GestureDetector(
+                                onTap: _fillDemoCredentials,
+                                child: Container(
+                                  width: double.infinity,
+                                  padding: const EdgeInsets.symmetric(
+                                    vertical: 10,
+                                  ),
+                                  decoration: BoxDecoration(
+                                    color: AppColors.accent,
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: const [
+                                      Icon(
+                                        Icons.auto_fix_high_rounded,
+                                        size: 15,
+                                        color: Colors.white,
+                                      ),
+                                      SizedBox(width: 6),
+                                      Text(
+                                        'Tap to autofill credentials',
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 13,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        // ─────────────────────────────────────────────────────
+
+                        // ─────────────────────────────────────────────────────   // ─────────────────────────────────────────────────
+                        verticalSpace(20),
                         AppTextFormField(
                           hintText: "Email",
-                          controller: emailController,
+                          controller: _emailController,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return "Please enter your email";
@@ -71,8 +224,8 @@ class LoginScreen extends StatelessWidget {
                         verticalSpace(16),
                         AppTextFormField(
                           hintText: "Password",
-                          controller: passwordController,
-                          isObscureText: isPasswordObscure,
+                          controller: _passwordController,
+                          isObscureText: _isPasswordObscure,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return "Please enter your password";
@@ -105,16 +258,14 @@ class LoginScreen extends StatelessWidget {
                                 text: "Log In",
                                 color: AppColors.primary,
                                 onTap: () {
-                                  if (formKey.currentState!.validate()) {
+                                  if (_formKey.currentState!.validate()) {
                                     cubit.login(
-                                      emailController.text.trim(),
-                                      passwordController.text.trim(),
+                                      _emailController.text.trim(),
+                                      _passwordController.text.trim(),
                                     );
                                   }
                                 },
                               ),
-
-                       
                         verticalSpace(24),
                       ],
                     ),
