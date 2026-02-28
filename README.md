@@ -13,17 +13,17 @@ A modern, clean Flutter e-commerce app with a full shopping experience — from 
 
 ## 🎥 Demo
 
-> 📹 **Video demo coming soon**
-> 
-> *(Add your video link here)*
+📹 **Watch the demo video here:**
+  
+🔗 https://drive.google.com/file/d/1EcTfj62768_xizR4v2N8expBql7N9dQy/view?usp=drivesdk
 
 ---
 
 ## 📱 Download
 
-> 📦 **APK download coming soon**
->
-> *(Add your APK link here)*
+📦 **Download APK:**
+
+🔗 https://drive.google.com/file/d/1czYyfCYPrml87CBywt9W7DJdwZMyvT8A/view?usp=drivesdk
 
 ---
 
@@ -61,87 +61,3 @@ A modern, clean Flutter e-commerce app with a full shopping experience — from 
 ---
 
 ## 🏗️ Architecture
-
-```
-lib/
-├── core/
-│   ├── di/                  # Dependency Injection (GetIt)
-│   ├── networking/          # Dio + API client
-│   ├── routing/             # App Router
-│   ├── utils/               # Colors, constants
-│   └── widgets/             # Shared widgets
-│
-└── features/
-    ├── login/               # Login screen + BLoC + API
-    ├── home/                # Products list + BLoC + API
-    ├── cart/                # Cart (SQLite)
-    ├── checkout/            # Checkout & payment (SQLite)
-    └── todo/                # Todo tasks (SQLite)
-```
-
----
-
-## 🔧 Tech Stack
-
-- **Flutter** — UI framework
-- **BLoC / Cubit** — State management
-- **Dio** — HTTP client
-- **GetIt** — Dependency injection
-- **SQLite (sqflite)** — Local database for cart, checkout & todo
-- **flutter_screenutil** — Responsive UI
-- **flutter_native_splash** — Native splash screen
-- **flutter_launcher_icons** — Custom app icon
-- **flutter_secure_storage** — Secure token storage
-
----
-
-## 🔌 API
-
-This app uses **[DummyJSON](https://dummyjson.com/)** as the backend API.
-
-| Endpoint | Usage |
-|---|---|
-| `POST /auth/login` | User login |
-| `GET /products` | Fetch all products |
-| `GET /products/:id` | Fetch product details |
-
-> **Demo Credentials**  
-> Username: `emilys` / Password: `emilyspass`
-
----
-
-## 🚀 Getting Started
-
-### Prerequisites
-
-- Flutter SDK `^3.11.0`
-- Dart SDK `^3.11.0`
-
-### Installation
-
-```bash
-# 1. Clone the repo
-git clone https://github.com/taha2901/store-app.git
-cd store_app
-
-# 2. Install dependencies
-flutter pub get
-
-# 3. Run the app
-flutter run
-```
-
----
-
-## 👨‍💻 Built By
-
-> Made with Taha Hamada using Flutter
-
----
-
-<div align="center">
-  <sub>⭐ If you like this project, give it a star!</sub>
-</div>
-
-
-
